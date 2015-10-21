@@ -70,6 +70,8 @@ describe('chatterbox', function() {
     describe('chatroom behavior', function() {
       it('should be able to clear messages from the DOM', function(){
         var orig = $('#chats').html('<blink>OMG IT\'s 1998!</blink>');
+        // Added:
+        expect($('#chats').children().length).to.equal(1);
         app.clearMessages();
         expect($('#chats').children().length).to.equal(0);
       });
@@ -81,12 +83,14 @@ describe('chatterbox', function() {
           roomname: 'lobby'
         };
 
+        $('#chats').children().remove();
         app.addMessage(message);
 
         expect($('#chats').children().length).to.equal(1);
       });
 
       it('should be able to add rooms to the DOM', function(){
+        $('#roomSelect').children().remove();
         app.addRoom('superLobby');
 
         expect($('#roomSelect').children().length).to.equal(1);
@@ -104,6 +108,7 @@ describe('chatterbox', function() {
           roomname: 'lobby'
         });
 
+        // Why are we calling .init() here?
         app.init();
 
         $('#main').find('.username').trigger('click');

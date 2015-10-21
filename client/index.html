@@ -7,14 +7,40 @@
 
     <!-- dependencies -->
     <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
     <!-- your scripts -->
     <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
+    <!-- FROM ZACH: I added this to init our app: -->
+    <script>
+      $(document).ready(function(){
+        app.init();
+      });
+    </script>
   </head>
   <body>
     <div id="main">
       <h1>chatterbox</h1>
       <!-- Your HTML goes here! -->
+
+      <div id="rooms">
+        Room:
+        <select id="roomSelect">
+        </select>
+      </div>
+
+      <div class="spinner">
+        <img src="images/spiffygif_46X46.gif" />
+      </div>
+
+      <form action="#" id="send" method="POST">
+        <input type="text" name="message" id="message" />
+        <input type="submit" name="submit" class="submit" />
+      </form>
+
+      <div id="chats">
+        
+      </div>
     </div>
   </body>
 </html>
